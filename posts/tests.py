@@ -10,7 +10,9 @@ class PostTests(TestCase):
         )
         self.post = Post.objects.create(
             title='Test Post',
+            slug='test-post',
             content='Test content here',
+            excerpt='Test excerpt here',
             author=self.user,
             published=True
         )
@@ -24,5 +26,5 @@ class PostTests(TestCase):
         self.assertContains(r, 'Test Post')
 
     def test_post_detail_loads(self):
-        r = self.client.get(f'/posts/{self.post.pk}/')
+        r = self.client.get(f'/posts/{self.post.slug}/')
         self.assertEqual(r.status_code, 200)
