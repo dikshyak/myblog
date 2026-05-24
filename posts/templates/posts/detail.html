@@ -1,7 +1,18 @@
 {% extends 'posts/base.html' %}
 {% block content %}
+  {% if post.image %}
+    <img src="{{ post.image.url }}" alt="{{ post.title }}"
+         style="width:100%;max-height:300px;object-fit:cover;border-radius:8px;margin-bottom:20px;">
+  {% endif %}
   <h1>{{ post.title }}</h1>
-  <p><em>By {{ post.author }} &mdash; {{ post.created|date:"d M Y" }}</em></p>
+  <p><em>By {{ post.author }} &mdash; {{ post.created|date:"d M Y" }}
+  {% if post.updated %}
+    &mdash; Updated: {{ post.updated|date:"d M Y" }}
+  {% endif %}
+  </em></p>
+  {% if post.excerpt %}
+    <p><strong>{{ post.excerpt }}</strong></p>
+  {% endif %}
   <div>{{ post.content|linebreaks }}</div>
   <br>
   <a href="/posts/">&larr; Back to all posts</a>

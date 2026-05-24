@@ -5,6 +5,6 @@ def post_list(request):
     posts = Post.objects.filter(published=True)
     return render(request, 'posts/list.html', {'posts': posts})
 
-def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk, published=True)
+def post_detail(request, slug):
+    post = get_object_or_404(Post, slug=slug, published=True)
     return render(request, 'posts/detail.html', {'post': post})

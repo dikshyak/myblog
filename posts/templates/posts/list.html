@@ -3,9 +3,17 @@
   <h1>All Posts</h1>
   {% for post in posts %}
     <article>
-      <h2><a href="/posts/{{ post.pk }}/">{{ post.title }}</a></h2>
+      {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}"
+             style="width:100%;max-height:200px;object-fit:cover;border-radius:8px;margin-bottom:10px;">
+      {% endif %}
+      <h2><a href="/posts/{{ post.slug }}/">{{ post.title }}</a></h2>
       <p>By {{ post.author }} &mdash; {{ post.created|date:"d M Y" }}</p>
-      <p>{{ post.content|truncatewords:30 }}</p>
+      {% if post.excerpt %}
+        <p>{{ post.excerpt }}</p>
+      {% else %}
+        <p>{{ post.content|truncatewords:30 }}</p>
+      {% endif %}
     </article>
   {% empty %}
     <p>No posts yet. <a href="/admin/">Add one in admin.</a></p>
