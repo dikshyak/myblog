@@ -1,0 +1,13 @@
+{% extends 'posts/base.html' %}
+{% block content %}
+  <h1>All Posts</h1>
+  {% for post in posts %}
+    <article>
+      <h2><a href="/posts/{{ post.pk }}/">{{ post.title }}</a></h2>
+      <p>By {{ post.author }} &mdash; {{ post.created|date:"d M Y" }}</p>
+      <p>{{ post.content|truncatewords:30 }}</p>
+    </article>
+  {% empty %}
+    <p>No posts yet. <a href="/admin/">Add one in admin.</a></p>
+  {% endfor %}
+{% endblock %}

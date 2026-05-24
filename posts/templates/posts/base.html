@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Blog</title>
+  <style>
+    body { font-family: sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; }
+    nav { margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+    nav a { text-decoration: none; font-weight: bold; color: #333; }
+    article { margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+    h1 { color: #222; }
+    a { color: #0070f3; }
+  </style>
+</head>
+<body>
+  <nav><a href="/posts/">My Blog</a></nav>
+  {% block content %}{% endblock %}
+</body>
+</html>
